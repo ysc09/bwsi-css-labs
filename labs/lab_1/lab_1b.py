@@ -38,7 +38,8 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
     Returns:
         float: The result of the operation.
     """
-
+    operation = operation.strip().lower()  # Normalize the operation string
+    
     if operation == "add":
         return num1 + num2
     elif operation == "subtract":
