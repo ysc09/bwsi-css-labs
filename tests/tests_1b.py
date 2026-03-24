@@ -37,5 +37,23 @@ def test_invalid_operation():
     with pytest.raises(ValueError, match="Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'."):
         simple_calculator("", 5, 3)                     # Test for empty operation
 
+def test_operation_case_insensitivity():
+    assert simple_calculator("ADD", 5, 3) == 8         # Test for uppercase operation
+    assert simple_calculator("Subtract", 5, 3) == 2    # Test for mixed case operation        
+    assert simple_calculator("MULTIPLY", 5, 3) == 15   # Test for uppercase operation
+    assert simple_calculator("DIVIDE", 6, 3) == 2      # Test for uppercase operation
+
+def test_operation_with_whitespace():
+    assert simple_calculator(" add ", 5, 3) == 8       # Test for operation with leading and trailing whitespace
+    assert simple_calculator(" subtract ", 5, 3) == 2  # Test for operation with leading and trailing whitespace
+    assert simple_calculator(" multiply ", 5, 3) == 15 # Test for operation with leading and trailing whitespace
+    assert simple_calculator(" divide ", 6, 3) == 2    # Test for operation with leading and trailing whitespace
+
+def test_operation_with_non_numeric_input():
+    with pytest.raises(ValueError):
+        simple_calculator("add", "five", 3)             # Test for non-numeric input for num1
+    with pytest.raises(ValueError):
+        simple_calculator("subtract", 5, "three")       # Test for non-numeric input for num2        
+
 if __name__ == "__main__":
     pytest.main()
