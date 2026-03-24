@@ -8,6 +8,22 @@ The script asks the user to input the numbers and the operation to be performed,
 and prints the result to the terminal window.
 
 """
+def request_sanitized_number(prompt: str) -> float:
+    """Helper function to request a number from the user and ensure it's a valid float."""
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+def request_nonzero_number(prompt: str) -> float:
+    """Helper function to request a non-zero number from the user."""
+    while True:
+        num = request_sanitized_number(prompt)
+        if num != 0:
+            return num
+        else:
+            print("Zero is not allowed. Please enter a non-zero number.")            
 
 def simple_calculator(operation: str, num1: float, num2: float) -> float:
     """
@@ -42,14 +58,19 @@ def main():
     print(f"===== Simple Calculator =====")
 
     # Ask the user for sample input    
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
+    num1 = request_sanitized_number("Enter the first number: ")
     operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+    if operation == "divide":
+        num2 = request_nonzero_number("Enter the second number (non-zero for division): ")
+    else:
+        num2 = request_sanitized_number("Enter the second number: ")    
 
     # Perform the calculation and display the result
-    result = simple_calculator(operation, num1, num2)
-    print(f"The result of {operation}ing {num1} and {num2} is: {result}")
-
+    try:
+        result = simple_calculator(operation, num1, num2)
+        print(f"The result of {operation}ing {num1} and {num2} is: {result}")
+    except ValueError as e:
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     main()
