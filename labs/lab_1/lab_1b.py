@@ -23,6 +23,12 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
         float: The result of the operation.
     """
 
+    print(f"===== Simple Calculator inside func call =====")
+
+    operation = operation.strip().lower()  # Normalize the operation string
+
+    if not isinstance(num1, (int, float)) or not isinstance(num2, (int, float)):
+        raise ValueError("Both num1 and num2 must be numeric values.")
     if operation == "add":
         return num1 + num2
     elif operation == "subtract":
