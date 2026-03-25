@@ -2,7 +2,7 @@
 tests_1b.py
 
 This module contains unit tests for the simple_calculator function defined in lab_1b.py.
-The tests cover various scenarios for addition, subtraction, multiplication, and division,
+The tests cover various scenarios for addition, subtraction, multiplication, and division operations
 """
 
 import pytest
