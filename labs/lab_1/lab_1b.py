@@ -23,8 +23,6 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
         float: The result of the operation.
     """
 
-    print(f"===== Simple Calculator inside func call =====")
-
     operation = operation.strip().lower()  # Normalize the operation string
 
     if not isinstance(num1, (int, float)) or not isinstance(num2, (int, float)):
@@ -45,8 +43,6 @@ def simple_calculator(operation: str, num1: float, num2: float) -> float:
 
 def main():
     
-    print(f"===== Simple Calculator =====")
-
     # Ask the user for sample input    
     num1 = float(input("Enter the first number: "))
     num2 = float(input("Enter the second number: "))
