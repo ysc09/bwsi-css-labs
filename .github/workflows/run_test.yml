@@ -2,6 +2,7 @@ name: simple_calculator unit test
 
 permissions:
   actions: write
+  contents: write 
   
 on: [push]  
   
