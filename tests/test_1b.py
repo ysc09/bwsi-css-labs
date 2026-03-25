@@ -2,6 +2,7 @@
 tests_1b.py
 
 This module contains unit tests for the simple_calculator function defined in lab_1b.py.
+The tests cover various scenarios for addition, subtraction, multiplication, and division,
 """
 
 import pytest
@@ -51,7 +52,7 @@ def test_operation_with_whitespace():
 
 def test_operation_with_non_numeric_input():
     with pytest.raises(ValueError):
-        simple_calculator("add", "five", 3)             # Test for non-numeric input for num1
+        simple_calculator("add", "five", 3)             # Test for  non-numeric input for num1
     with pytest.raises(ValueError):
         simple_calculator("subtract", 5, "three")       # Test for non-numeric input for num2        
 
